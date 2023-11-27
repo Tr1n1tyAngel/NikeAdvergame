@@ -19,7 +19,6 @@ public class BattleMechanics : MonoBehaviour
     
     private void Start()
     {
-        
         damage = 5;
         GameManager.Instance.weaponDropdown.SetActive(false);
         GameManager.Instance.upgradeMenu.SetActive(false);

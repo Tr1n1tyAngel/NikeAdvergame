@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     public GameObject eHBFill;
     public GameObject weaponDropdown;
     public GameObject upgradeMenu;
+    public GameObject pauseMenu;
     public Button attackBtn;
     public float pHealth;
     public float eHealth;
@@ -38,6 +39,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         
+        
         win = false;
         lose = false;
         
@@ -48,16 +50,42 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if(SceneManager.GetActiveScene().name == "Shop")
+        if (SceneManager.GetActiveScene().name != "Shop")
         {
+            pauseMenu.SetActive(false);
+        }
+        else
+        {
+            pauseMenu.SetActive(true);
+        }
+
+        if (SceneManager.GetActiveScene().name == "Shop")
+        {
+            upgradeMenu.SetActive(false);
             battleCanvas.SetActive(false);
             win = false;
             lose = false;
+           
         }
         else if(SceneManager.GetActiveScene().name == "BattleScene")
         {
             battleCanvas.SetActive(true);
             
         }
+    }
+    public void SavePlayerData()
+    {
+        SaveSystem.SavePlayerData(this);
+        Debug.Log("Data saved");
+    }
+    public void LoadPlayerData()
+    {
+        PlayerData data = SaveSystem.LoadPlayerData();
+        pHealth = data.pHealth;
+        for(int i = 0; i<3; i++)
+        {
+            weaponsDamage[i] = data.weaponsDamage[i];
+        }
+        SceneManager.LoadScene("Shop");
     }
 }

@@ -11,7 +11,6 @@ public class MainMenu : MonoBehaviour
     [SerializeField] GameObject mainMenu;
     [SerializeField] GameObject saveMenu;
     [SerializeField] GameObject settingsMenu;
-
     [SerializeField] public AudioMixer audioMixer;
     [SerializeField] public TMP_Dropdown resolutionDropdown;
     Resolution[] resolutions;
@@ -38,6 +37,10 @@ public class MainMenu : MonoBehaviour
         mainMenu.SetActive(false);
         saveMenu.SetActive(true);
         settingsMenu.SetActive(false);
+    }
+    public void NewGame()
+    {
+        SceneManager.LoadScene("Shop");
     }
     public void SettingsMenu()
     {
