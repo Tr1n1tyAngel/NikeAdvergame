@@ -7,13 +7,17 @@ public class PlayerData
 {
     public float pHealth;
     public int[] weaponsDamage = new int[3];
+    public bool CH1 = false;
+    public bool CH2= false;
 
     public PlayerData(GameManager gameManager)
     {
        pHealth= gameManager.pHealth;
-        foreach(int weapon in weaponsDamage)
+        for (int i = 0; i < 3; i++)
         {
-            weaponsDamage[weapon] = gameManager.weaponsDamage[weapon];
+            weaponsDamage[i] = gameManager.weaponsDamage[i];
         }
+        CH1= gameManager.CH1;
+        CH2= gameManager.CH2;
     }
 }

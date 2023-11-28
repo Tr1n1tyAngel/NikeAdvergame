@@ -8,7 +8,7 @@ public class NPC : MonoBehaviour
     [SerializeField] public GameObject dialogueCanvas;
     [SerializeField] public TextMeshProUGUI dialogueText;
     [SerializeField] public string dialogue;
-    
+     
     [SerializeField] public bool playerNearby;
     [SerializeField] bool firstMenu = true;
     [SerializeField] string[] shoe;

@@ -10,6 +10,7 @@ public class MainMenu : MonoBehaviour
 {
     [SerializeField] GameObject mainMenu;
     [SerializeField] GameObject saveMenu;
+    [SerializeField] GameObject CharacterSelectMenu;
     [SerializeField] GameObject settingsMenu;
     [SerializeField] public AudioMixer audioMixer;
     [SerializeField] public TMP_Dropdown resolutionDropdown;
@@ -23,6 +24,7 @@ public class MainMenu : MonoBehaviour
         mainMenu.SetActive(true);
         saveMenu.SetActive(false);
         settingsMenu.SetActive(false);
+        CharacterSelectMenu.SetActive(false);
         Resolution();
         Time.timeScale = 1.0f;
     }
@@ -37,22 +39,38 @@ public class MainMenu : MonoBehaviour
         mainMenu.SetActive(false);
         saveMenu.SetActive(true);
         settingsMenu.SetActive(false);
+        CharacterSelectMenu.SetActive(false);
     }
     public void NewGame()
     {
-        SceneManager.LoadScene("Shop");
+        mainMenu.SetActive(false);
+        saveMenu.SetActive(false);
+        settingsMenu.SetActive(false);
+        CharacterSelectMenu.SetActive(true);
     }
     public void SettingsMenu()
     {
         mainMenu.SetActive(false);
         saveMenu.SetActive(false);
         settingsMenu.SetActive(true);
+        CharacterSelectMenu.SetActive(false);
     }
     public void Back()
     {
         mainMenu.SetActive(true);
         saveMenu.SetActive(false);
         settingsMenu.SetActive(false);
+        CharacterSelectMenu.SetActive(false);
+    }
+    public void CharacterSelect1()
+    {
+        GameManager.Instance.CH1 = true;
+        SceneManager.LoadScene("Shop");
+    }
+    public void CharacterSelect2()
+    {
+        GameManager.Instance.CH2 = true;
+        SceneManager.LoadScene("Shop");
     }
     public void Quit()
     {

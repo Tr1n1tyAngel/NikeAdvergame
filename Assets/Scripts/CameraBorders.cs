@@ -8,7 +8,11 @@ public class CameraBorders : MonoBehaviour
     [SerializeField] float smooth;
     [SerializeField] private Vector2 minPos;
     [SerializeField] private Vector2 maxPos;
-    
+
+    private void Start()
+    {
+       
+    }
     private void FixedUpdate()
     {
         if(transform.position!=target.position)

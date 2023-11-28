@@ -11,13 +11,23 @@ public class Player : MonoBehaviour
     public float movementSpeed;
     public bool isMoving = false;
     private Vector2 input;
-
+    public SpriteRenderer playerSprite;
+    public Sprite Character1;
+    public Sprite Character2;
 
 
     private void Update()
     {
         
-        if(!isMoving)
+        if (GameManager.Instance.CH1 == true)
+        {
+            playerSprite.sprite = Character1;
+        }
+        else if (GameManager.Instance.CH2 == true)
+        {
+            playerSprite.sprite = Character2;
+        }
+        if (!isMoving)
         {
             input.x = Input.GetAxisRaw("Horizontal");
             input.y = Input.GetAxisRaw("Vertical");
@@ -69,6 +79,7 @@ public class Player : MonoBehaviour
         {
             if(Random.Range(1, 101) <= 10)
             {
+                GameManager.Instance.encounter = true;
                 SceneManager.LoadScene("BattleScene");
             }
         }

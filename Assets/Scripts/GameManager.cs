@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -21,6 +22,15 @@ public class GameManager : MonoBehaviour
     public int[] weaponsDamage = new int[3];
     public bool win = false;
     public bool lose = false;
+    public bool CH1 = false;
+    public bool CH2 = false;
+    public bool encounter = false;
+   public bool caught= false;
+    public ShoeInventory shoeInventory;
+    public TextMeshProUGUI enemyName;
+    public EnemySpawn enemySpawn;
+    public Image playerImage;
+    public Image enemyImage;
     private void Awake()
     {
         if (Instance == null)
@@ -50,13 +60,20 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+        if(encounter==true)
+        {
+            enemySpawn.GetRandomShoe();
+            encounter = false;
+        }
         if (SceneManager.GetActiveScene().name != "Shop")
         {
             pauseMenu.SetActive(false);
         }
         else
         {
+            
             pauseMenu.SetActive(true);
+            
         }
 
         if (SceneManager.GetActiveScene().name == "Shop")

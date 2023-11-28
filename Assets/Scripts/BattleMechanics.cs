@@ -13,8 +13,8 @@ public class BattleMechanics : MonoBehaviour
     public float damage;
     
     int weaponNum = 0 ;
-    
-    
+
+   
     
     
     private void Start()
@@ -26,6 +26,10 @@ public class BattleMechanics : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if(SceneManager.GetActiveScene().name == "BattleScene" &&  GameManager.Instance.win == false)
+        {
+            GameManager.Instance.upgradeMenu.SetActive(false);
+        }
         if(GameManager.Instance.win == true&& GameManager.Instance.lose !=true && GameManager.Instance.upgradeMenu != null)
         {
 
@@ -104,7 +108,19 @@ public class BattleMechanics : MonoBehaviour
     }
     public void Catch()
     {
+        int a = Mathf.Max(Mathf.FloorToInt((3 * health.eHealthMax - 2 * GameManager.Instance.eHealth) / (3f * health.eHealthMax)), 1);
 
+        int randomValue = UnityEngine.Random.Range(1, a + 1);
+        if(randomValue == 1)
+        {
+            GameManager.Instance.caught = true;
+        }
+        if (GameManager.Instance.caught == true)
+        {
+            Win();
+            //GameManager.Instance.shoeInventory.AddShoe();
+            GameManager.Instance.caught = false;
+        }
     }
   public void Run()
     {
@@ -183,7 +199,8 @@ public class BattleMechanics : MonoBehaviour
         GameManager.Instance.lose = false;
         GameManager.Instance.eHealth = health.eHealthMax;
         GameManager.Instance.weaponDropdown.SetActive(false);
-        
+        GameManager.Instance.encounter = false;
+
     }
     private void Lose()
     {
@@ -191,6 +208,7 @@ public class BattleMechanics : MonoBehaviour
         GameManager.Instance.eHealth = health.eHealthMax;
         GameManager.Instance.pHealth = health.pHealthMax;
         Run();
+        GameManager.Instance.encounter = false;
     }
     
 }

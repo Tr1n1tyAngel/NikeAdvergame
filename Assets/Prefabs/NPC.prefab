@@ -149,8 +149,7 @@ MonoBehaviour:
   playerNearby: 0
   firstMenu: 1
   shoe:
-  - 1
-  - 2
-  - 3
-  - 4
-  - 5
+  - BlackAirforce
+  - HornedDevil
+  - JumpmanMVP
+  - SlobberFoot
