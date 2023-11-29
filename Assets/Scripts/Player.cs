@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
-
+[System.Serializable]
 public class Player : MonoBehaviour
 {
     [SerializeField] public LayerMask solidObjects;

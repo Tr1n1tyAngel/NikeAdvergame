@@ -5,7 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class Shoe
 {
-    [SerializeField] ShoeBase _base;
+    [SerializeField] public ShoeBase _base;
 
     public ShoeBase Base
     { get { return _base; } }

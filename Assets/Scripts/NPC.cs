@@ -2,17 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-
+[System.Serializable]
 public class NPC : MonoBehaviour
 {
+    
     [SerializeField] public GameObject dialogueCanvas;
     [SerializeField] public TextMeshProUGUI dialogueText;
     [SerializeField] public string dialogue;
      
     [SerializeField] public bool playerNearby;
     [SerializeField] bool firstMenu = true;
-    [SerializeField] string[] shoe;
-    int rnd;
+    [SerializeField] public string[] shoe;
+    public int rnd;
 
     // Start is called before the first frame update
     void Start()
@@ -31,6 +32,7 @@ public class NPC : MonoBehaviour
                 firstMenu = true;
                 dialogueText.text = "";
                 dialogueCanvas.SetActive(false);
+                GameManager.Instance.inventoryCanvas.SetActive(false);
 
             }
             else if(!dialogueCanvas.activeSelf && firstMenu) 
@@ -39,18 +41,19 @@ public class NPC : MonoBehaviour
                 firstMenu = false;
                 dialogueText.text = "The shoe i want is: " + shoe[rnd];
                 dialogueCanvas.SetActive(true);
-                
-                
-                
-                
+
+
+
+
 
             }
         }
     }
     
+   
     void RandomShoe()
     {
-        rnd = Random.Range(0, 5);
+        rnd = Random.Range(0, 4);
     }
     private void OnTriggerEnter2D(Collider2D other)
     {

@@ -4,11 +4,13 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-
+[System.Serializable]
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     public GameObject battleCanvas;
+    public GameObject inventoryCanvas;
+    public GameObject npcCanvas;
     public GameObject playerHealthBar;
     public GameObject enemyHealthBar;
     public GameObject pHBFill;
@@ -17,6 +19,9 @@ public class GameManager : MonoBehaviour
     public GameObject upgradeMenu;
     public GameObject pauseMenu;
     public Button attackBtn;
+    public Button weaponBtn;
+    public Button catchBtn;
+    public Button runBtn;
     public float pHealth;
     public float eHealth;
     public int[] weaponsDamage = new int[3];
@@ -28,9 +33,12 @@ public class GameManager : MonoBehaviour
    public bool caught= false;
     public ShoeInventory shoeInventory;
     public TextMeshProUGUI enemyName;
+    public TextMeshProUGUI catchTxt;
     public EnemySpawn enemySpawn;
     public Image playerImage;
     public Image enemyImage;
+    public Health health;
+    public bool invMenu;
     private void Awake()
     {
         if (Instance == null)
@@ -60,9 +68,17 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if(encounter==true)
+        InventoryDisplay();
+        
+        if (encounter==true)
         {
             enemySpawn.GetRandomShoe();
+            catchTxt.text = "";
+            health.eHealthMax = 100;
+            attackBtn.interactable = true;
+            weaponBtn.interactable = true;
+            catchBtn.interactable = true;
+            runBtn.interactable = true;
             encounter = false;
         }
         if (SceneManager.GetActiveScene().name != "Shop")
@@ -80,6 +96,7 @@ public class GameManager : MonoBehaviour
         {
             upgradeMenu.SetActive(false);
             battleCanvas.SetActive(false);
+            
             win = false;
             lose = false;
            
@@ -88,6 +105,7 @@ public class GameManager : MonoBehaviour
         {
             battleCanvas.SetActive(true);
             
+
         }
     }
     public void SavePlayerData()
@@ -97,12 +115,35 @@ public class GameManager : MonoBehaviour
     }
     public void LoadPlayerData()
     {
-        PlayerData data = SaveSystem.LoadPlayerData();
-        pHealth = data.pHealth;
-        for(int i = 0; i<3; i++)
+        PlayerData loadedData = SaveSystem.LoadPlayerData();
+        if (loadedData != null)
         {
-            weaponsDamage[i] = data.weaponsDamage[i];
+            health.pHealthMax = loadedData.pHealth;
+            pHealth = loadedData.pHealth;
+            weaponsDamage = loadedData.weaponsDamage;
+            CH1 = loadedData.CH1;
+            CH2 = loadedData.CH2;
+            shoeInventory.shoes= new List<Shoe>(loadedData.shoes);
+
+            
+        }
+        else
+        {
+            Debug.LogError("Failed to load data");
         }
         SceneManager.LoadScene("Shop");
+    }
+    public void InventoryDisplay()
+    {
+        if (Input.GetKeyDown(KeyCode.I) && invMenu)
+        {
+            inventoryCanvas.SetActive(true);
+            invMenu = false;
+        }
+        else if (Input.GetKeyDown(KeyCode.I) && !invMenu)
+        {
+            inventoryCanvas.SetActive(false);
+            invMenu = true;
+        }
     }
 }

@@ -1,37 +1,37 @@
 
 using UnityEngine;
 using System.IO;
-using System.Runtime.Serialization.Formatters.Binary;
 
-public static class SaveSystem 
+public static class SaveSystem
 {
     public static void SavePlayerData(GameManager gameManager)
     {
-        BinaryFormatter formatter = new BinaryFormatter();
-        string path = Application.persistentDataPath + "/playerData.NikeAdvergameSave";
-        FileStream stream = new FileStream(path, FileMode.Create);
         PlayerData data = new PlayerData(gameManager);
-        formatter.Serialize(stream,data);
-        stream.Close();
+        string json = JsonUtility.ToJson(data);
+        Debug.Log("Saving data: " + json); // Debug line
+
+        string path = Application.persistentDataPath + "/playerData.NikeAdvergameSave";
+        File.WriteAllText(path, json);
+        Debug.Log("Data saved to: " + path); // Debug line
     }
 
     public static PlayerData LoadPlayerData()
     {
         string path = Application.persistentDataPath + "/playerData.NikeAdvergameSave";
 
-        if(File.Exists(path))
+        if (File.Exists(path))
         {
-            BinaryFormatter formatter = new BinaryFormatter();
-            FileStream stream = new FileStream(path, FileMode.Open);
-            PlayerData data = formatter.Deserialize(stream) as PlayerData;
-            stream.Close();
+            string json = File.ReadAllText(path);
+            Debug.Log("Loaded data: " + json); // Debug line
+
+            PlayerData data = JsonUtility.FromJson<PlayerData>(json);
             return data;
-            
         }
         else
         {
-            Debug.LogError("No save file avaliable");
+            Debug.LogError("No save file available");
             return null;
         }
+        
     }
 }

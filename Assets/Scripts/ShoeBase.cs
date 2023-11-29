@@ -3,21 +3,27 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName ="Shoe", menuName = "Shoe/Create new shoe")]
+[System.Serializable]
 public class ShoeBase :ScriptableObject
 {
-    [SerializeField] string name;
-    [SerializeField] bool shiny;
+    [SerializeField] public string name;
+    [SerializeField] public bool shiny;
     [TextArea]
-    [SerializeField] string description;
+    [SerializeField] public string description;
 
-    [SerializeField] Sprite shoeSprite;
-    [SerializeField] Sprite shinySprite;
+    [SerializeField] public Sprite shoeSprite;
+    [SerializeField] public Sprite tinyShoeSprite;
+    [SerializeField] public Sprite shinySprite;
 
     public string Name
     {
         get { return name; }
     }
     public Sprite ShoeSprite
+    {
+        get { return shoeSprite; }
+    }
+    public Sprite TinyShoeSprite
     {
         get { return shoeSprite; }
     }

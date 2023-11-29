@@ -1,15 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[System.Serializable]
 public class EnemySpawn : MonoBehaviour
 {
-    [SerializeField] List<Shoe> enemyShoes;
+    [SerializeField] public List<Shoe> enemyShoes;
+    public int rnd;
     
     public Shoe GetRandomShoe()
     {
         int shiny = Random.Range(0, 2);
-        int rnd = Random.Range(0, enemyShoes.Count);
+        rnd = Random.Range(0, enemyShoes.Count);
         GameManager.Instance.enemyName.text = enemyShoes[rnd].Base.Name;
         if(shiny ==0)
         {

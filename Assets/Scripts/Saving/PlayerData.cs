@@ -9,6 +9,7 @@ public class PlayerData
     public int[] weaponsDamage = new int[3];
     public bool CH1 = false;
     public bool CH2= false;
+    public List<Shoe> shoes;
 
     public PlayerData(GameManager gameManager)
     {
@@ -19,5 +20,7 @@ public class PlayerData
         }
         CH1= gameManager.CH1;
         CH2= gameManager.CH2;
+        shoes= new List<Shoe>(gameManager.shoeInventory.shoes);
     }
+    
 }

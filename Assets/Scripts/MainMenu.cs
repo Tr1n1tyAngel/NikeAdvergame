@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-
+[System.Serializable]
 public class MainMenu : MonoBehaviour
 {
     [SerializeField] GameObject mainMenu;
