@@ -17,7 +17,9 @@ public class ShoeBase :ScriptableObject
 
     public string Name
     {
+        set { name = value; }
         get { return name; }
+        
     }
     public Sprite ShoeSprite
     {
@@ -29,6 +31,7 @@ public class ShoeBase :ScriptableObject
     }
     public bool Shiny
     {
+        set { shiny = value; }
         get { return shiny; }
     }
     public Sprite ShinySprite

@@ -36,6 +36,7 @@ public class MainMenu : MonoBehaviour
     }
     public void SaveMenu()
     {
+        AudioManager.instance.Play("Button");
         mainMenu.SetActive(false);
         saveMenu.SetActive(true);
         settingsMenu.SetActive(false);
@@ -43,6 +44,7 @@ public class MainMenu : MonoBehaviour
     }
     public void NewGame()
     {
+        AudioManager.instance.Play("Button");
         mainMenu.SetActive(false);
         saveMenu.SetActive(false);
         settingsMenu.SetActive(false);
@@ -50,6 +52,7 @@ public class MainMenu : MonoBehaviour
     }
     public void SettingsMenu()
     {
+        AudioManager.instance.Play("Button");
         mainMenu.SetActive(false);
         saveMenu.SetActive(false);
         settingsMenu.SetActive(true);
@@ -57,6 +60,7 @@ public class MainMenu : MonoBehaviour
     }
     public void Back()
     {
+        AudioManager.instance.Play("Button");
         mainMenu.SetActive(true);
         saveMenu.SetActive(false);
         settingsMenu.SetActive(false);
@@ -64,16 +68,19 @@ public class MainMenu : MonoBehaviour
     }
     public void CharacterSelect1()
     {
+        AudioManager.instance.Play("Button");
         GameManager.Instance.CH1 = true;
         SceneManager.LoadScene("Shop");
     }
     public void CharacterSelect2()
     {
+        AudioManager.instance.Play("Button");
         GameManager.Instance.CH2 = true;
         SceneManager.LoadScene("Shop");
     }
     public void Quit()
     {
+        AudioManager.instance.Play("Button");
         Application.Quit();
     }
     void Resolution()

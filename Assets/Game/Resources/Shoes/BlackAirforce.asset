@@ -15,5 +15,6 @@ MonoBehaviour:
   name: BlackAirforce
   shiny: 0
   description: 
-  shoeSprite: {fileID: 0}
-  shinySprite: {fileID: 0}
+  shoeSprite: {fileID: 21300000, guid: 037c948132f494a4399a309caaf48979, type: 3}
+  tinyShoeSprite: {fileID: 21300000, guid: 05ea3df75c01f4845b8a1064cc004d8c, type: 3}
+  shinySprite: {fileID: 21300000, guid: 3322a84589c9351449c9978aa75e06be, type: 3}

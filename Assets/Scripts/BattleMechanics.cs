@@ -45,6 +45,7 @@ public class BattleMechanics : MonoBehaviour
     }
     public void AttackBtn()
     {
+        AudioManager.instance.Play("Button");
         GameManager.Instance.attackBtn.interactable = false;
         if(weaponNum==0)
         {
@@ -76,7 +77,7 @@ public class BattleMechanics : MonoBehaviour
     }
     public void Weapon()
     {
-        
+        AudioManager.instance.Play("Button");
         GameManager.Instance.weaponDropdown.SetActive(true);
         
         
@@ -109,6 +110,7 @@ public class BattleMechanics : MonoBehaviour
     }
     public void Catch()
     {
+        AudioManager.instance.Play("Button");
         catchChance = ((float)(health.eHealthMax - GameManager.Instance.eHealth) / health.eHealthMax) * 100;
 
         randomValue = UnityEngine.Random.Range(0f, 100f);
@@ -137,6 +139,7 @@ public class BattleMechanics : MonoBehaviour
     }
   public void Run()
     {
+        AudioManager.instance.Play("Button");
         GameManager.Instance.weaponDropdown.SetActive(false);
         GameManager.Instance.upgradeMenu.SetActive(false);
         SceneManager.LoadScene("Shop");
@@ -151,6 +154,7 @@ public class BattleMechanics : MonoBehaviour
     }
     public void AttackEnemy()
     {
+        AudioManager.instance.Play("Attack");
         GameManager.Instance.eHealth -= damage;
     }
     void AttackFix()

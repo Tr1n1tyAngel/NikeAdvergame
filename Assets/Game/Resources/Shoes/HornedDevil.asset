@@ -15,5 +15,6 @@ MonoBehaviour:
   name: HornedDevil
   shiny: 0
   description: 
-  shoeSprite: {fileID: 0}
-  shinySprite: {fileID: 0}
+  shoeSprite: {fileID: 21300000, guid: 3417f46097f5817479b8144f15b57ec2, type: 3}
+  tinyShoeSprite: {fileID: 21300000, guid: c133d6e540d5ef4488c65de6b82cc4c7, type: 3}
+  shinySprite: {fileID: 21300000, guid: 93859f33d775c7e4cbeec00dd490c0d0, type: 3}

@@ -28,17 +28,20 @@ public class PauseMenu : MonoBehaviour
     }
     public void Pause()
     {
+        AudioManager.instance.Play("Button");
         pauseCanvas.SetActive(true);
         firstMenu = false;
     }
     //resumes the game
     public void Resume()
     {
+        AudioManager.instance.Play("Button");
         pauseCanvas.SetActive(false);
         firstMenu = true;
     }
     public void Quit()
     {
+        AudioManager.instance.Play("Button");
         Application.Quit();
     }
 }

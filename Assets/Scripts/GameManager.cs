@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.TextCore.Text;
 using UnityEngine.UI;
 [System.Serializable]
 public class GameManager : MonoBehaviour
@@ -11,6 +12,7 @@ public class GameManager : MonoBehaviour
     public GameObject battleCanvas;
     public GameObject inventoryCanvas;
     public GameObject npcCanvas;
+    public GameObject mainCanvas;
     public GameObject playerHealthBar;
     public GameObject enemyHealthBar;
     public GameObject pHBFill;
@@ -36,9 +38,12 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI catchTxt;
     public EnemySpawn enemySpawn;
     public Image playerImage;
+    public Sprite Character1;
+    public Sprite Character2;
     public Image enemyImage;
     public Health health;
     public bool invMenu;
+    public int countRemoved;
     private void Awake()
     {
         if (Instance == null)
@@ -81,6 +86,7 @@ public class GameManager : MonoBehaviour
             runBtn.interactable = true;
             encounter = false;
         }
+       
         if (SceneManager.GetActiveScene().name != "Shop")
         {
             pauseMenu.SetActive(false);
@@ -96,25 +102,42 @@ public class GameManager : MonoBehaviour
         {
             upgradeMenu.SetActive(false);
             battleCanvas.SetActive(false);
+            mainCanvas.SetActive(true);
+            npcCanvas.SetActive(true);
             
             win = false;
             lose = false;
-           
+          
         }
         else if(SceneManager.GetActiveScene().name == "BattleScene")
         {
+            npcCanvas.SetActive(false);
+            inventoryCanvas.SetActive(false);
+            mainCanvas.SetActive(false);
             battleCanvas.SetActive(true);
-            
+           
+
+        }
+        if (GameManager.Instance.CH1 == true)
+        {
+            playerImage.sprite= Character1;
+
+        }
+        else if (GameManager.Instance.CH2 == true)
+        {
+            playerImage.sprite=Character2;
 
         }
     }
     public void SavePlayerData()
     {
+        AudioManager.instance.Play("Button");
         SaveSystem.SavePlayerData(this);
         Debug.Log("Data saved");
     }
     public void LoadPlayerData()
     {
+        AudioManager.instance.Play("Button");
         PlayerData loadedData = SaveSystem.LoadPlayerData();
         if (loadedData != null)
         {
@@ -124,6 +147,7 @@ public class GameManager : MonoBehaviour
             CH1 = loadedData.CH1;
             CH2 = loadedData.CH2;
             shoeInventory.shoes= new List<Shoe>(loadedData.shoes);
+            countRemoved = loadedData.countRemoved;
 
             
         }
@@ -137,11 +161,13 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.I) && invMenu)
         {
+            npcCanvas.SetActive(false);
             inventoryCanvas.SetActive(true);
             invMenu = false;
         }
         else if (Input.GetKeyDown(KeyCode.I) && !invMenu)
         {
+            npcCanvas.SetActive(false);
             inventoryCanvas.SetActive(false);
             invMenu = true;
         }

@@ -10,7 +10,9 @@ public class InventoryDisplay : MonoBehaviour
     public Image selectedShoeImage; 
     public GameObject textTemplate;
     public NPCManager npcManager;
-     // List to store all shoes
+    
+    [SerializeField] public TextMeshProUGUI shoeAmount;
+    // List to store all shoes
 
     void Start()
     {
@@ -18,7 +20,7 @@ public class InventoryDisplay : MonoBehaviour
     }
     private void Update()
     {
-       
+        shoeAmount.text = "Shoes given to customers: " + GameManager.Instance.countRemoved;
     }
     void PopulateScrollView()
     {
@@ -52,6 +54,7 @@ public class InventoryDisplay : MonoBehaviour
     }
     void OnShoeSelected(Shoe shoe,string shoeName)
     {
+        AudioManager.instance.Play("Button");
         selectedShoeImage.sprite = shoe.Base.TinyShoeSprite;
 
         if (npcManager.select == true)
@@ -61,6 +64,7 @@ public class InventoryDisplay : MonoBehaviour
                 if (shoeName == npc.shoe[npc.rnd])
                 {
                     ConfirmRemoveShoe(shoe);
+                    npc.RandomShoe();
                     npcManager.select = false;
                 }
             }
@@ -72,6 +76,7 @@ public class InventoryDisplay : MonoBehaviour
 
     void ConfirmRemoveShoe(Shoe shoe)
     {
+        GameManager.Instance.countRemoved++;
         GameManager.Instance.shoeInventory.shoes.Remove(shoe);
         RefreshInventoryDisplay();
     }

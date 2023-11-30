@@ -15,5 +15,6 @@ MonoBehaviour:
   name: SlobberFoot
   shiny: 0
   description: 
-  shoeSprite: {fileID: 0}
-  shinySprite: {fileID: 0}
+  shoeSprite: {fileID: 21300000, guid: 901de090e963a2a428ef2105d596b1d3, type: 3}
+  tinyShoeSprite: {fileID: 21300000, guid: f652062ca85c45a4d9426f93cfa51578, type: 3}
+  shinySprite: {fileID: 21300000, guid: bf77b09fa9f315d4bac2fe923788d2fe, type: 3}

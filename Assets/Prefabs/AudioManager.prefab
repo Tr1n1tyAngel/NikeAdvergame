@@ -1,0 +1,127 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7277204837804655775
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2286011622339161422}
+  - component: {fileID: 7466660240710101693}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2286011622339161422
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7277204837804655775}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4.958965, y: -0.6810382, z: 218.00595}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7466660240710101693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7277204837804655775}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 634730786d6211941b350f2a003bddef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: ButtonClick
+    audioClip: {fileID: 8300000, guid: 256e8763a8b4ff345b54043691876f31, type: 3}
+    volume: 0
+    pitch: 1
+    source: {fileID: 0}
+  - name: MetalFootsteps
+    audioClip: {fileID: 8300000, guid: e49d7b459e26eba4fbb7da5c351a03f9, type: 3}
+    volume: 0
+    pitch: 1
+    source: {fileID: 0}
+  - name: WetFootsteps
+    audioClip: {fileID: 8300000, guid: 6b8c58b0dda590341865a264194d1705, type: 3}
+    volume: 0
+    pitch: 1
+    source: {fileID: 0}
+  - name: Scalpel
+    audioClip: {fileID: 8300000, guid: 626d59f05de9f3b46a5881acc9dd93f4, type: 3}
+    volume: 0
+    pitch: 1
+    source: {fileID: 0}
+  - name: Beam
+    audioClip: {fileID: 8300000, guid: bdcb9c7800db2c344a7e54b505cb5b39, type: 3}
+    volume: 0
+    pitch: 0
+    source: {fileID: 0}
+  - name: Grenades
+    audioClip: {fileID: 8300000, guid: d4220c7996f539a428bfc2af8418af16, type: 3}
+    volume: 0
+    pitch: 1
+    source: {fileID: 0}
+  - name: pHurt
+    audioClip: {fileID: 8300000, guid: 0cd145334dfe21849863522a28980d64, type: 3}
+    volume: 0
+    pitch: 0
+    source: {fileID: 0}
+  - name: pDeath
+    audioClip: {fileID: 8300000, guid: 61a430fc0c325d747bc65049e9b140f5, type: 3}
+    volume: 0
+    pitch: 1
+    source: {fileID: 0}
+  - name: cHurt
+    audioClip: {fileID: 8300000, guid: 6a721dcad8ecb374c84ab328deabb3c0, type: 3}
+    volume: 0
+    pitch: 1
+    source: {fileID: 0}
+  - name: cDeath
+    audioClip: {fileID: 8300000, guid: f2f5298eb2c808e4e886cb3c1ce08efd, type: 3}
+    volume: 0
+    pitch: 1
+    source: {fileID: 0}
+  - name: Boss1
+    audioClip: {fileID: 8300000, guid: d318eae489971864889e8526dfb14099, type: 3}
+    volume: 0
+    pitch: 1
+    source: {fileID: 0}
+  - name: Boss2
+    audioClip: {fileID: 8300000, guid: 8ab84df81a1ea67418f577e5c030d118, type: 3}
+    volume: 0
+    pitch: 1
+    source: {fileID: 0}
+  - name: Boss3
+    audioClip: {fileID: 8300000, guid: 16ef49defbe60974d96081728ae6f248, type: 3}
+    volume: 0
+    pitch: 1
+    source: {fileID: 0}
+  - name: Boss4
+    audioClip: {fileID: 8300000, guid: 7c097aa499f49274cb7eda25cfbe380e, type: 3}
+    volume: 0
+    pitch: 1
+    source: {fileID: 0}
+  - name: HubUI
+    audioClip: {fileID: 8300000, guid: d2738def3d7e0cf47b46a72af6915db4, type: 3}
+    volume: 0
+    pitch: 1
+    source: {fileID: 0}
+  - name: MissionStart
+    audioClip: {fileID: 8300000, guid: dc4d55818aa631f4197a904cab36ff3d, type: 3}
+    volume: 0
+    pitch: 1
+    source: {fileID: 0}

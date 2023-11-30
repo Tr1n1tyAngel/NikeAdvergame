@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
+
 [System.Serializable]
 public class NPC : MonoBehaviour
 {
@@ -14,7 +16,11 @@ public class NPC : MonoBehaviour
     [SerializeField] bool firstMenu = true;
     [SerializeField] public string[] shoe;
     public int rnd;
-
+    public Image shoeSprite;
+    public Sprite BA;
+    public Sprite HD;
+    public Sprite R;
+    public Sprite SF;
     // Start is called before the first frame update
     void Start()
     {
@@ -41,17 +47,33 @@ public class NPC : MonoBehaviour
                 firstMenu = false;
                 dialogueText.text = "The shoe i want is: " + shoe[rnd];
                 dialogueCanvas.SetActive(true);
+                if (shoe[rnd] == "BlackAirforce")
+                {
+                    shoeSprite.sprite = BA;
 
+                }
+                else if (shoe[rnd] == "HornedDevil")
+                {
+                    shoeSprite.sprite = HD;
 
+                }
+                else if (shoe[rnd] == "Redacted")
+                {
+                    shoeSprite.sprite = R;
 
+                }
+                else if (shoe[rnd] == "SlobberFoot")
+                {
+                    shoeSprite.sprite = SF;
 
-
+                }
             }
         }
+        
     }
     
    
-    void RandomShoe()
+    public void RandomShoe()
     {
         rnd = Random.Range(0, 4);
     }

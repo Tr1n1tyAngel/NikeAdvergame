@@ -14,7 +14,10 @@ public class Player : MonoBehaviour
     public SpriteRenderer playerSprite;
     public Sprite Character1;
     public Sprite Character2;
-
+    public Animator animator;
+    public RuntimeAnimatorController female;
+    public RuntimeAnimatorController male;
+   
 
     private void Update()
     {
@@ -22,29 +25,55 @@ public class Player : MonoBehaviour
         if (GameManager.Instance.CH1 == true)
         {
             playerSprite.sprite = Character1;
+            animator.runtimeAnimatorController = male;
+            if (!isMoving)
+            {
+                input.x = Input.GetAxisRaw("Horizontal");
+                input.y = Input.GetAxisRaw("Vertical");
+                animator.SetFloat("Horizontal", input.x);
+                animator.SetFloat("Vertical", input.y);
+                animator.SetFloat("Speed", input.sqrMagnitude);
+
+                if (input != Vector2.zero)
+                {
+                    var targetPos = transform.position;
+                    targetPos.x += input.x;
+                    targetPos.y += input.y;
+
+                    if (IsWalkable(targetPos))
+                    {
+                        StartCoroutine(Move(targetPos));
+                    }
+
+                }
+            }
         }
         else if (GameManager.Instance.CH2 == true)
         {
             playerSprite.sprite = Character2;
-        }
-        if (!isMoving)
-        {
-            input.x = Input.GetAxisRaw("Horizontal");
-            input.y = Input.GetAxisRaw("Vertical");
-
-            if(input!=Vector2.zero)
+            animator.runtimeAnimatorController = female;
+            if (!isMoving)
             {
-                var targetPos=transform.position;
-                targetPos.x += input.x;
-                targetPos.y += input.y;
-
-                if(IsWalkable(targetPos))
+                input.x = Input.GetAxisRaw("Horizontal");
+                input.y = Input.GetAxisRaw("Vertical");
+                animator.SetFloat("Horizontal",input.x);
+                animator.SetFloat("Vertical", input.y);
+                animator.SetFloat("Speed", input.sqrMagnitude);
+                if (input != Vector2.zero)
                 {
-                    StartCoroutine(Move(targetPos));
+                    var targetPos = transform.position;
+                    targetPos.x += input.x;
+                    targetPos.y += input.y;
+
+                    if (IsWalkable(targetPos))
+                    {
+                        StartCoroutine(Move(targetPos));
+                    }
+
                 }
-                
             }
         }
+        
 
 
 
@@ -77,8 +106,9 @@ public class Player : MonoBehaviour
     {
         if (Physics2D.OverlapCircle(transform.position, 0.2f, shelvesLayer)!=null)
         {
-            if(Random.Range(1, 101) <= 10)
+            if (Random.Range(1, 101) <= 10)
             {
+                AudioManager.instance.Play("Main");
                 GameManager.Instance.encounter = true;
                 SceneManager.LoadScene("BattleScene");
             }
